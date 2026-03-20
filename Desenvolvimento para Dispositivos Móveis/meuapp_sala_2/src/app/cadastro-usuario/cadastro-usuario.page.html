@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color ="warning">
+    <ion-title>Cadastro de Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Novo Usuário</ion-card-title>
+      <ion-card-subtitle>Informar os campos abaixo</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input [(ngModel)]="usuario.nome" placeholder="Digite o seu nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Idade:</ion-label>
+        <ion-input [(ngModel)]="usuario.idade" type="number" placeholder="Informe a idade"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="cadastrarUsuario()">Cadastrar Usuário</ion-button>
+      <ion-button expand="block" color="medium" (click)="limparFormulario()">Limpar Campos</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>Usuários Cadastrados</ion-card-header>
+
+    <ion-list *ngIf="usuariosCadastrados.length > 0; else limpaLista">
+      <ion-item *ngFor="let item of usuariosCadastrados; let i = index">
+        <ion-label>
+          <h2> {{ i + 1 }}. {{ item.nome }} </h2>
+          <p>Idade: {{ item.idade }}</p>
+        </ion-label>
+        <ion-button fill=lightblue stroke="blue" color ="danger" (click)="excluirUsuario(i)">Excluir</ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #limpaLista>
+      <ion-card-content>
+        Nenhum nome cadastrado!!
+      </ion-card-content>
+    </ng-template>
+
+  </ion-card>
+</ion-content>

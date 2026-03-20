@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Primeiro Projeto
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Perfil do Aluno</ion-card-subtitle>
+      <ion-card-title>{{ estudante.nome }}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <div style="font-size: 1.5rem; text-align: center; padding: 20px;">
+        Faltas <strong>{{ estudante.faltas }}</strong>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-button expand="block" color="success" (click)="adicionarFalta()">Registra Faltas</ion-button>
+    <ion-button expand="block" fill="outline" color="danger" (click)="limparFalta()">Zerar Faltas</ion-button>
+  </ion-card>
+  <ion-card>
+    <ion-button expand="block" (click)="abriCadastroUsuario()">Cadastrar Usuário</ion-button>
+  </ion-card>
+
+</ion-content>
