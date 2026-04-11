@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inscrição</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="success">
+      <ion-title size="large">Inscrição</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="form-container">
+    <ion-item>
+      <ion-label position="floating">Designação</ion-label>
+      <ion-input [(ngModel)]="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categoria - F ou C</ion-label>
+      <ion-input [(ngModel)]="tipo" type="text" ></ion-input>
+    </ion-item>
+    <p class="error" *ngIf="mensagemErro" color="danger">{{mensagemErro}}</p>
+    
+    <ion-item>
+      <ion-label position="floating">Localização</ion-label>
+      <ion-input [(ngModel)]="endereco" type="text"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="cadastrar()">Guardar</ion-button>
+  </div>
+
+  <div class="list-container">
+    <ion-list>
+      <ion-item *ngFor="let cadastro of listaCadastros; let i = index">
+        <ion-label>
+          <h2>{{cadastro.nome}}</h2>
+          <p>{{cadastro.tipo}} - {{cadastro.endereco}}</p>
+        </ion-label>
+        <ion-button fill="clear" color="danger" (click)="excluir(i)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

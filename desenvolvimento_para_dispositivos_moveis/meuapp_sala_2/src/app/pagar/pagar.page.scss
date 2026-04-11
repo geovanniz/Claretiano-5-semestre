@@ -1,0 +1,34 @@
+.form-container {
+  padding: 24px 16px;
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.05) 0%, rgba(255, 152, 0, 0.02) 100%);
+  margin: 12px 0;
+  border-radius: 8px;
+}
+
+.list-container {
+  padding: 16px 12px;
+  margin-top: 20px;
+}
+
+ion-item {
+  margin-bottom: 14px;
+  --border-radius: 8px;
+  --padding-start: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ion-item:active {
+  transform: scale(0.98);
+}
+
+ion-button {
+  margin-top: 24px;
+  --border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+ion-button:active {
+  opacity: 0.8;
+}
