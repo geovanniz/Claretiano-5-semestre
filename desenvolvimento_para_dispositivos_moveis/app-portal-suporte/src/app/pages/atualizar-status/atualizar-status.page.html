@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lista-chamados" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Atualizar Status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-content">
+  <div class="form-container">
+
+    @if (chamado) {
+      <!-- Card informativo do chamado -->
+      <ion-card class="info-card">
+        <ion-card-header>
+          <ion-card-title>{{ chamado.titulo }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Solicitante:</strong> {{ chamado.solicitante }}</p>
+          <p><strong>Técnico:</strong> {{ chamado.tecnico }}</p>
+          <p>
+            <strong>Status atual:</strong>
+            <ion-badge [color]="corStatus(chamado.status)" style="margin-left: 6px; vertical-align: middle;">
+              {{ chamado.status }}
+            </ion-badge>
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Formulário de atualização -->
+      <ion-item class="form-item" lines="none">
+        <ion-label position="stacked">Novo Status</ion-label>
+        <ion-select [(ngModel)]="novoStatus" interface="popover">
+          @for (s of statusOpcoes; track s) {
+            <ion-select-option [value]="s">{{ s }}</ion-select-option>
+          }
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="form-item" lines="none">
+        <ion-label position="stacked">Observação</ion-label>
+        <ion-textarea
+          [(ngModel)]="observacao"
+          placeholder="Descreva o que foi feito ou situação atual..."
+          rows="5"
+          auto-grow="true">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" class="form-btn" (click)="salvar()">
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        Salvar Alterações
+      </ion-button>
+
+      <ion-toast
+        [isOpen]="toastAberto"
+        [message]="toastMensagem"
+        [color]="toastCor"
+        [duration]="1500"
+        position="bottom"
+        (didDismiss)="toastAberto = false">
+      </ion-toast>
+
+    } @else {
+      <div class="empty-state">
+        <p>Chamado não encontrado.</p>
+      </div>
+    }
+
+  </div>
+</ion-content>

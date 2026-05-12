@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Técnicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="lista-content">
+
+  @if (tecnicos.length === 0) {
+    <div class="empty-state">
+      <ion-icon name="person-outline" class="empty-icon"></ion-icon>
+      <p class="empty-title">Nenhum técnico cadastrado</p>
+      <p class="empty-sub">Toque no + para adicionar um técnico</p>
+    </div>
+  } @else {
+    <ion-list class="tecnicos-list" lines="none">
+      @for (tecnico of tecnicos; track tecnico.id) {
+        <ion-item class="tecnico-card" lines="none">
+
+          <!-- Avatar com inicial -->
+          <div class="tecnico-avatar" slot="start">
+            {{ tecnico.nome.charAt(0).toUpperCase() }}
+          </div>
+
+          <ion-label>
+            <p class="tecnico-nome">{{ tecnico.nome }}</p>
+
+            <div class="tecnico-badges">
+              <ion-badge [color]="corEspecialidade(tecnico.especialidade)" class="badge-esp">
+                {{ tecnico.especialidade }}
+              </ion-badge>
+              <ion-badge [color]="tecnico.situacao === 'Ativo' ? 'success' : 'medium'" class="badge-sit">
+                {{ tecnico.situacao }}
+              </ion-badge>
+            </div>
+
+            <ion-note class="tecnico-contato">{{ tecnico.contato }}</ion-note>
+          </ion-label>
+
+          <!-- Botão excluir -->
+          <ion-button
+            slot="end"
+            fill="clear"
+            color="danger"
+            class="btn-excluir"
+            (click)="confirmarExclusao(tecnico)">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+
+        </ion-item>
+      }
+    </ion-list>
+  }
+
+  <!-- FAB: Novo técnico -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="primary" (click)="novoTecnico()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

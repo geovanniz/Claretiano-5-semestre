@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sobre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="sobre-content">
+  <div class="sobre-container">
+
+    <!-- Hero do app -->
+    <div class="sobre-hero">
+      <div class="sobre-icon-wrapper">
+        <ion-icon name="construct-outline" class="sobre-icon"></ion-icon>
+      </div>
+      <h1 class="sobre-app-nome">Chamados Técnicos</h1>
+      <ion-badge color="primary" class="sobre-versao">v1.0.0</ion-badge>
+    </div>
+
+    <!-- Card de informações -->
+    <ion-card class="sobre-card">
+      <ion-card-content>
+        <ion-list lines="none">
+          @for (info of infos; track info.rotulo) {
+            <ion-item class="sobre-item">
+              <div class="sobre-item-icon" slot="start">
+                <ion-icon [name]="info.icon"></ion-icon>
+              </div>
+              <ion-label>
+                <p class="sobre-rotulo">{{ info.rotulo }}</p>
+                <p class="sobre-valor">{{ info.valor }}</p>
+              </ion-label>
+            </ion-item>
+          }
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Rodapé -->
+    <p class="sobre-rodape">
+      Desenvolvido como projeto acadêmico<br>
+      Ionic + Angular · {{ anoAtual }}
+    </p>
+
+  </div>
+</ion-content>

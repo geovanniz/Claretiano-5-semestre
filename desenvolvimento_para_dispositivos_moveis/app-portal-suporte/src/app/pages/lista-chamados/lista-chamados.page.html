@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chamados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="lista-content">
+
+  @if (chamados.length === 0) {
+    <div class="empty-state">
+      <ion-icon name="clipboard-outline" class="empty-icon"></ion-icon>
+      <p class="empty-title">Nenhum chamado encontrado</p>
+      <p class="empty-sub">Toque no + para abrir um novo chamado</p>
+    </div>
+  } @else {
+    <ion-list class="chamados-list" lines="none">
+      @for (chamado of chamados; track chamado.id) {
+        <ion-item
+          button
+          detail="false"
+          class="chamado-card"
+          (click)="abrirDetalhes(chamado.id)">
+
+          <!-- Indicador lateral de prioridade -->
+          <div class="prioridade-bar" [attr.data-prioridade]="chamado.prioridade" slot="start"></div>
+
+          <ion-label>
+            <p class="chamado-titulo">{{ chamado.titulo }}</p>
+            <p class="chamado-meta">
+              <span>{{ chamado.solicitante }}</span>
+              @if (chamado.setor) {
+                <span class="meta-sep">·</span>
+                <span>{{ chamado.setor }}</span>
+              }
+            </p>
+            <p class="chamado-tecnico">Técnico: {{ chamado.tecnico }}</p>
+
+            <div class="chamado-badges">
+              <ion-badge [color]="corStatus(chamado.status)" class="badge-status">
+                {{ chamado.status }}
+              </ion-badge>
+              <ion-badge [color]="corPrioridade(chamado.prioridade)" class="badge-prioridade">
+                {{ chamado.prioridade }}
+              </ion-badge>
+            </div>
+          </ion-label>
+
+          <ion-note slot="end" class="chamado-data">{{ chamado.dataAbertura }}</ion-note>
+
+        </ion-item>
+      }
+    </ion-list>
+  }
+
+  <!-- FAB: Novo chamado -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="primary" (click)="novoChamado()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

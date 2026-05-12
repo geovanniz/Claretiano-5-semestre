@@ -1,0 +1,117 @@
+// ── Variáveis locais ─────────────────────────────────────────────────────────
+$primary: var(--ion-color-primary);
+$primary-rgb: var(--ion-color-primary-rgb);
+
+// ── Layout geral ─────────────────────────────────────────────────────────────
+.login-content {
+  --background: linear-gradient(160deg, #1a237e 0%, #283593 40%, #1565c0 100%);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 24px 20px;
+  box-sizing: border-box;
+}
+
+// ── Seção hero ────────────────────────────────────────────────────────────────
+.login-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.login-main-icon {
+  font-size: 44px;
+  color: #ffffff;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+// ── Formulário ────────────────────────────────────────────────────────────────
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 28px 20px 24px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.login-item {
+  --background: rgba(255, 255, 255, 0.1);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  --color: #ffffff;
+  --highlight-color-focused: #90caf9;
+  --placeholder-color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  ion-label {
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.85rem;
+  }
+
+  ion-input {
+    --color: #ffffff;
+    --placeholder-color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+.field-icon {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  margin-right: 4px;
+}
+
+// ── Botão ─────────────────────────────────────────────────────────────────────
+.login-btn {
+  margin-top: 8px;
+  --background: #42a5f5;
+  --background-hover: #64b5f6;
+  --background-activated: #1e88e5;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 20px rgba(66, 165, 245, 0.45);
+  font-weight: 600;
+  font-size: 1rem;
+  height: 52px;
+  letter-spacing: 0.3px;
+  transition: transform 0.15s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

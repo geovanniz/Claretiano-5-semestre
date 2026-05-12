@@ -1,0 +1,91 @@
+// ── Layout geral ─────────────────────────────────────────────────────────────
+.menu-content {
+  --background: #f0f4f8;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px 32px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+// ── Cabeçalho visual ──────────────────────────────────────────────────────────
+.menu-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.menu-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--ion-color-primary);
+  box-shadow: 0 6px 24px rgba(var(--ion-color-primary-rgb), 0.4);
+  margin-bottom: 12px;
+
+  ion-icon {
+    font-size: 36px;
+    color: #ffffff;
+  }
+}
+
+.menu-welcome {
+  font-size: 0.95rem;
+  color: var(--ion-color-medium);
+  margin: 0;
+}
+
+// ── Botões ────────────────────────────────────────────────────────────────────
+.menu-buttons {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-btn {
+  --border-radius: 14px;
+  --box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+  height: 54px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+  ion-icon {
+    font-size: 1.3rem;
+  }
+
+  &:active {
+    transform: scale(0.97);
+    --box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// ── Divisor ───────────────────────────────────────────────────────────────────
+.menu-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
+  margin: 4px 0;
+}
+
+// ── Botão Sair ────────────────────────────────────────────────────────────────
+.menu-btn--sair {
+  --border-radius: 14px;
+  --border-width: 1.5px;
+  --box-shadow: none;
+  font-weight: 600;
+  opacity: 0.9;
+
+  &:active {
+    opacity: 1;
+  }
+}

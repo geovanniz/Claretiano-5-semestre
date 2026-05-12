@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lista-chamados" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes do Chamado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="detalhes-content">
+
+  @if (chamado) {
+    <div class="detalhes-container">
+
+      <!-- Card principal com título e badges -->
+      <ion-card class="detalhe-card detalhe-card--hero">
+        <ion-card-header>
+          <ion-card-subtitle>Chamado #{{ chamado.id }}</ion-card-subtitle>
+          <ion-card-title>{{ chamado.titulo }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="hero-badges">
+            <ion-badge [color]="corStatus(chamado.status)">{{ chamado.status }}</ion-badge>
+            <ion-badge [color]="corPrioridade(chamado.prioridade)">{{ chamado.prioridade }}</ion-badge>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Informações do chamado -->
+      <ion-card class="detalhe-card">
+        <ion-card-content>
+
+          <ion-item lines="full" class="detalhe-item">
+            <ion-label>
+              <p class="detalhe-rotulo">Solicitante</p>
+              <p class="detalhe-valor">{{ chamado.solicitante }}</p>
+            </ion-label>
+          </ion-item>
+
+          @if (chamado.setor) {
+            <ion-item lines="full" class="detalhe-item">
+              <ion-label>
+                <p class="detalhe-rotulo">Setor</p>
+                <p class="detalhe-valor">{{ chamado.setor }}</p>
+              </ion-label>
+            </ion-item>
+          }
+
+          <ion-item lines="full" class="detalhe-item">
+            <ion-label>
+              <p class="detalhe-rotulo">Técnico Responsável</p>
+              <p class="detalhe-valor">{{ chamado.tecnico }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" class="detalhe-item">
+            <ion-label>
+              <p class="detalhe-rotulo">Data de Abertura</p>
+              <p class="detalhe-valor">{{ chamado.dataAbertura }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="none" class="detalhe-item">
+            <ion-label>
+              <p class="detalhe-rotulo">Descrição</p>
+              <p class="detalhe-valor detalhe-valor--descricao">{{ chamado.descricao }}</p>
+            </ion-label>
+          </ion-item>
+
+          @if (chamado.observacao) {
+            <ion-item lines="none" class="detalhe-item detalhe-item--obs">
+              <ion-label>
+                <p class="detalhe-rotulo">Observação</p>
+                <p class="detalhe-valor">{{ chamado.observacao }}</p>
+              </ion-label>
+            </ion-item>
+          }
+
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Botão de ação -->
+      <ion-button
+        expand="block"
+        class="detalhe-btn"
+        [disabled]="chamado.status === 'Concluído' || chamado.status === 'Cancelado'"
+        (click)="atualizarStatus()">
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        Atualizar Status
+      </ion-button>
+
+    </div>
+  } @else {
+    <div class="empty-state">
+      <p>Chamado não encontrado.</p>
+    </div>
+  }
+
+</ion-content>

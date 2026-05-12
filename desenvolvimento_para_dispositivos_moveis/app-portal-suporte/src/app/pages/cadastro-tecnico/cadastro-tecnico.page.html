@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Técnico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-content">
+  <div class="form-container">
+
+    <!-- Nome -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Nome <ion-note color="danger">*</ion-note></ion-label>
+      <ion-input
+        [(ngModel)]="nome"
+        placeholder="Nome completo do técnico"
+        autocapitalize="words">
+      </ion-input>
+    </ion-item>
+
+    <!-- Especialidade -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Especialidade <ion-note color="danger">*</ion-note></ion-label>
+      <ion-select [(ngModel)]="especialidade" interface="popover" placeholder="Selecione">
+        @for (e of especialidades; track e) {
+          <ion-select-option [value]="e">{{ e }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+    <!-- Contato -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Contato <ion-note color="danger">*</ion-note></ion-label>
+      <ion-input
+        [(ngModel)]="contato"
+        placeholder="Telefone ou e-mail"
+        type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Situação -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Situação</ion-label>
+      <ion-select [(ngModel)]="situacao" interface="popover">
+        @for (s of situacoes; track s) {
+          <ion-select-option [value]="s">{{ s }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" class="form-btn" (click)="salvar()">
+      <ion-icon name="save-outline" slot="start"></ion-icon>
+      Salvar Técnico
+    </ion-button>
+
+  </div>
+
+  <ion-toast
+    [isOpen]="toastAberto"
+    [message]="toastMensagem"
+    [color]="toastCor"
+    [duration]="2000"
+    position="bottom"
+    (didDismiss)="toastAberto = false">
+  </ion-toast>
+
+</ion-content>

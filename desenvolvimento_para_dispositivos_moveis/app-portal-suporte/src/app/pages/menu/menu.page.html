@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Menu Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="menu-content">
+  <div class="menu-container">
+
+    <!-- Cabeçalho de boas-vindas -->
+    <div class="menu-header">
+      <div class="menu-avatar">
+        <ion-icon name="construct-outline"></ion-icon>
+      </div>
+      <p class="menu-welcome">Bem-vindo ao sistema</p>
+    </div>
+
+    <!-- Botões de navegação -->
+    <div class="menu-buttons">
+      @for (opcao of opcoes; track opcao.rota) {
+        <ion-button
+          expand="block"
+          [color]="opcao.cor"
+          class="menu-btn"
+          (click)="navegar(opcao.rota)">
+          <ion-icon [name]="opcao.icon" slot="start"></ion-icon>
+          {{ opcao.label }}
+        </ion-button>
+      }
+
+      <!-- Divisor visual antes do Sair -->
+      <div class="menu-divider"></div>
+
+      <ion-button
+        expand="block"
+        color="danger"
+        fill="outline"
+        class="menu-btn menu-btn--sair"
+        (click)="sair()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        Sair
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

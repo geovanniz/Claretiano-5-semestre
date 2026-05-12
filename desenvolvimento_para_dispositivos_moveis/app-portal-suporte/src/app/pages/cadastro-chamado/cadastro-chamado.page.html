@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Chamado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-content">
+  <div class="form-container">
+
+    <!-- Solicitante -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Solicitante <ion-note color="danger">*</ion-note></ion-label>
+      <ion-input
+        [(ngModel)]="solicitante"
+        placeholder="Nome de quem está abrindo o chamado"
+        autocapitalize="words">
+      </ion-input>
+    </ion-item>
+
+    <!-- Setor -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Setor</ion-label>
+      <ion-input
+        [(ngModel)]="setor"
+        placeholder="Ex: TI, RH, Financeiro">
+      </ion-input>
+    </ion-item>
+
+    <!-- Título -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Título <ion-note color="danger">*</ion-note></ion-label>
+      <ion-input
+        [(ngModel)]="titulo"
+        placeholder="Resumo do problema">
+      </ion-input>
+    </ion-item>
+
+    <!-- Descrição -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Descrição <ion-note color="danger">*</ion-note></ion-label>
+      <ion-textarea
+        [(ngModel)]="descricao"
+        placeholder="Descreva o problema detalhadamente"
+        rows="4"
+        auto-grow="true">
+      </ion-textarea>
+    </ion-item>
+
+    <!-- Prioridade -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Prioridade <ion-note color="danger">*</ion-note></ion-label>
+      <ion-select [(ngModel)]="prioridade" interface="popover" placeholder="Selecione">
+        @for (p of prioridades; track p) {
+          <ion-select-option [value]="p">{{ p }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+    <!-- Técnico responsável -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Técnico Responsável <ion-note color="danger">*</ion-note></ion-label>
+      <ion-select [(ngModel)]="tecnico" interface="popover" placeholder="Selecione um técnico ativo">
+        @for (t of tecnicosAtivos; track t.id) {
+          <ion-select-option [value]="t.nome">{{ t.nome }} — {{ t.especialidade }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+    <!-- Observação (opcional) -->
+    <ion-item class="form-item" lines="none">
+      <ion-label position="stacked">Observação</ion-label>
+      <ion-textarea
+        [(ngModel)]="observacao"
+        placeholder="Informações adicionais (opcional)"
+        rows="2"
+        auto-grow="true">
+      </ion-textarea>
+    </ion-item>
+
+    <!-- Data de abertura (somente leitura) -->
+    <ion-item class="form-item form-item--readonly" lines="none">
+      <ion-label position="stacked">Data de Abertura</ion-label>
+      <ion-input [value]="dataAbertura" readonly></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="form-btn" (click)="salvar()">
+      <ion-icon name="save-outline" slot="start"></ion-icon>
+      Salvar Chamado
+    </ion-button>
+
+  </div>
+
+  <ion-toast
+    [isOpen]="toastAberto"
+    [message]="toastMensagem"
+    [color]="toastCor"
+    [duration]="2000"
+    position="bottom"
+    (didDismiss)="toastAberto = false">
+  </ion-toast>
+
+</ion-content>

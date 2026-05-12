@@ -1,0 +1,121 @@
+.sobre-content {
+  --background: linear-gradient(160deg, #1a237e 0%, #283593 40%, #1565c0 100%);
+}
+
+.sobre-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 40px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+// ── Hero ──────────────────────────────────────────────────────────────────────
+.sobre-hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.sobre-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.sobre-icon {
+  font-size: 44px;
+  color: #ffffff;
+}
+
+.sobre-app-nome {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+  letter-spacing: -0.3px;
+}
+
+.sobre-versao {
+  font-size: 0.82rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+.sobre-card {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+
+  ion-card-content {
+    padding: 8px 4px;
+  }
+}
+
+// ── Itens de informação ───────────────────────────────────────────────────────
+.sobre-item {
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  --min-height: 58px;
+  border-bottom: 1px solid var(--ion-color-light-shade);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sobre-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--ion-color-primary);
+  flex-shrink: 0;
+  margin-right: 12px;
+
+  ion-icon {
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+}
+
+.sobre-rotulo {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--ion-color-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin: 0 0 2px;
+}
+
+.sobre-valor {
+  font-size: 0.92rem;
+  color: var(--ion-color-dark);
+  font-weight: 500;
+  margin: 0;
+  white-space: normal;
+}
+
+// ── Rodapé ────────────────────────────────────────────────────────────────────
+.sobre-rodape {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  line-height: 1.6;
+}

@@ -1,0 +1,72 @@
+.form-content {
+  --background: #f0f4f8;
+}
+
+.form-container {
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// ── Card de informação ────────────────────────────────────────────────────────
+.info-card {
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+
+  ion-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  ion-card-content {
+    p {
+      font-size: 0.88rem;
+      color: var(--ion-color-medium-shade);
+      margin: 4px 0;
+    }
+  }
+}
+
+// ── Campos ────────────────────────────────────────────────────────────────────
+.form-item {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 14px;
+  --inner-padding-end: 14px;
+  --min-height: 62px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  ion-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ion-color-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  ion-select, ion-textarea {
+    font-size: 0.97rem;
+    color: var(--ion-color-dark);
+  }
+}
+
+// ── Botão ─────────────────────────────────────────────────────────────────────
+.form-btn {
+  --border-radius: 14px;
+  --box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.35);
+  height: 52px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  color: var(--ion-color-medium);
+}

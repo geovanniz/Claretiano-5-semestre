@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resumo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="resumo-content">
+  <div class="resumo-container">
+
+    @if (!temChamados) {
+      <!-- Estado vazio -->
+      <div class="empty-state">
+        <ion-icon name="bar-chart-outline" class="empty-icon"></ion-icon>
+        <p class="empty-title">Nenhum chamado registrado</p>
+        <p class="empty-sub">Os resumos aparecerão aqui conforme os chamados forem criados</p>
+      </div>
+    } @else {
+
+      <!-- Card: Total geral -->
+      <ion-card class="resumo-card resumo-card--total">
+        <ion-card-content>
+          <div class="total-wrapper">
+            <ion-icon name="bar-chart-outline" class="total-icon"></ion-icon>
+            <div>
+              <p class="total-label">Total de Chamados</p>
+              <p class="total-numero">{{ totalGeral }}</p>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Card: Por Status -->
+      <ion-card class="resumo-card">
+        <ion-card-header>
+          <ion-card-title class="card-titulo">Por Status</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="stats-grid">
+            @for (item of statusCards; track item.key) {
+              <div class="stat-item">
+                <ion-badge [color]="item.cor" class="stat-badge">
+                  {{ status[item.key] }}
+                </ion-badge>
+                <span class="stat-label">{{ item.label }}</span>
+              </div>
+            }
+          </div>
+
+          <!-- Barra visual de progresso -->
+          @if (totalGeral > 0) {
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar">
+                <div class="progress-segment seg-aberto"
+                  [style.width.%]="(status.aberto / totalGeral) * 100">
+                </div>
+                <div class="progress-segment seg-atendimento"
+                  [style.width.%]="(status.emAtendimento / totalGeral) * 100">
+                </div>
+                <div class="progress-segment seg-concluido"
+                  [style.width.%]="(status.concluido / totalGeral) * 100">
+                </div>
+                <div class="progress-segment seg-cancelado"
+                  [style.width.%]="(status.cancelado / totalGeral) * 100">
+                </div>
+              </div>
+              <div class="progress-legend">
+                <span class="leg-aberto">■ Aberto</span>
+                <span class="leg-atendimento">■ Em atendimento</span>
+                <span class="leg-concluido">■ Concluído</span>
+                <span class="leg-cancelado">■ Cancelado</span>
+              </div>
+            </div>
+          }
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Card: Por Prioridade -->
+      <ion-card class="resumo-card">
+        <ion-card-header>
+          <ion-card-title class="card-titulo">Por Prioridade</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="stats-grid">
+            @for (item of prioridadeCards; track item.key) {
+              <div class="stat-item">
+                <ion-badge [color]="item.cor" class="stat-badge">
+                  {{ prioridade[item.key] }}
+                </ion-badge>
+                <span class="stat-label">{{ item.label }}</span>
+              </div>
+            }
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+    }
+  </div>
+</ion-content>

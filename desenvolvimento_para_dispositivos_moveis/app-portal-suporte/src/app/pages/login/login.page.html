@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chamados Técnicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <div class="login-container">
+
+    <!-- Logo / cabeçalho visual -->
+    <div class="login-hero">
+      <div class="login-icon-wrapper">
+        <ion-icon name="construct-outline" class="login-main-icon"></ion-icon>
+      </div>
+      <h1 class="login-title">Portal de Suporte</h1>
+      <p class="login-subtitle">Gestão de Chamados Técnicos</p>
+    </div>
+
+    <!-- Formulário -->
+    <div class="login-form">
+      <ion-item class="login-item" lines="none">
+        <ion-icon name="person-outline" slot="start" class="field-icon"></ion-icon>
+        <ion-label position="floating">Usuário</ion-label>
+        <ion-input
+          id="input-usuario"
+          [(ngModel)]="usuario"
+          type="text"
+          placeholder="Digite seu usuário"
+          autocomplete="username"
+          (keyup.enter)="entrar()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="login-item" lines="none">
+        <ion-icon name="lock-closed-outline" slot="start" class="field-icon"></ion-icon>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input
+          id="input-senha"
+          [(ngModel)]="senha"
+          type="password"
+          placeholder="Digite sua senha"
+          autocomplete="current-password"
+          (keyup.enter)="entrar()">
+        </ion-input>
+      </ion-item>
+
+      <ion-button
+        id="btn-entrar"
+        expand="block"
+        class="login-btn"
+        (click)="entrar()">
+        <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        Entrar
+      </ion-button>
+    </div>
+
+  </div>
+
+  <!-- Toast de erro -->
+  <ion-toast
+    [isOpen]="toastAberto"
+    [message]="toastMensagem"
+    [duration]="2500"
+    position="bottom"
+    color="danger"
+    (didDismiss)="fecharToast()">
+  </ion-toast>
+
+</ion-content>
