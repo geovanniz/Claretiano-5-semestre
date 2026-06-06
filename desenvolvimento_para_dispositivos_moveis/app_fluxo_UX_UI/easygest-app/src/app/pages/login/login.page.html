@@ -1,0 +1,49 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="login-container">
+
+    <div class="logo-area">
+      <div class="logo-icon">
+        <ion-icon name="storefront-outline"></ion-icon>
+      </div>
+      <h1>EasyGest</h1>
+      <p>Sistema de gestão empresarial</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input
+          formControlName="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email">
+        </ion-input>
+      </ion-item>
+      <div class="error-msg" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        E-mail inválido
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input
+          formControlName="password"
+          [type]="showPassword ? 'text' : 'password'">
+        </ion-input>
+        <ion-button fill="clear" slot="end" (click)="showPassword = !showPassword">
+          <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-margin-top"
+        [disabled]="form.invalid">
+        Entrar
+      </ion-button>
+
+    </form>
+
+  </div>
+</ion-content>

@@ -1,0 +1,25 @@
+# Specifying a name is optional.
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build output
+www/
+dist/
+out-tsc/
+.angular/
+
+# Capacitor
+android/
+ios/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo

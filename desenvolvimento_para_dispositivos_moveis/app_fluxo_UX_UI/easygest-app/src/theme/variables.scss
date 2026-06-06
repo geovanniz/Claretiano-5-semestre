@@ -1,0 +1,43 @@
+// Ionic CSS Variables — tema EasyGest
+:root {
+  --ion-color-primary: #1D9E75;
+  --ion-color-primary-rgb: 29,158,117;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #198965;
+  --ion-color-primary-tint: #34a883;
+
+  --ion-color-secondary: #0F6E56;
+  --ion-color-secondary-rgb: 15,110,86;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-shade: #0d614c;
+  --ion-color-secondary-tint: #277d67;
+
+  --ion-color-success: #3B6D11;
+  --ion-color-warning: #854F0B;
+  --ion-color-danger:  #C0392B;
+}
+
+// Componentes
+.stat-card {
+  background: var(--ion-color-step-50, #f5f5f5);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 4px;
+  &.success { background: #EAF3DE; }
+  &.warning { background: #FAEEDA; }
+  .stat-label { font-size: 12px; color: #666; margin: 0 0 4px; }
+  .stat-value { font-size: 20px; font-weight: 600; margin: 0; }
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  span { font-size: 16px; font-weight: 600; min-width: 20px; text-align: center; }
+}
+
+.product-name { font-size: 13px; font-weight: 600; margin: 8px 0 2px; }
+.product-price { font-size: 13px; color: #1D9E75; font-weight: 500; margin: 0 0 6px; }
+.error-msg { color: var(--ion-color-danger); font-size: 12px; padding: 4px 16px; }

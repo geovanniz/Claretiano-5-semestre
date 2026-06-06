@@ -1,0 +1,5 @@
+{
+  "name": "easygest-app",
+  "integrations": { "capacitor": {} },
+  "type": "angular"
+}
